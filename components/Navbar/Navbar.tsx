@@ -8,7 +8,7 @@ import { JSX, SVGProps } from "react";
 
 export default function Navbar() {
     const router = useRouter()
-    const { user: currentUser, loading: isAuthLoading } = useAuth();
+    const { user: currentUser } = useAuth();
 
     return (
         <div className="flex justify-between py-3">
@@ -20,7 +20,8 @@ export default function Navbar() {
             </div>
             <div className="hidden md:flex">
                 {currentUser ? <Button className="text-md rounded-full text-[#212121]" onClick={() => router.push('/post')}>Post</Button> :
-                    <Button disabled={isAuthLoading} className="text-md rounded-full min-w-[80px] text-[#212121]" onClick={() => router.push('/login')}>{isAuthLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Login'} </Button>
+                    // <Button disabled={isAuthLoading} className="text-md rounded-full min-w-[80px] text-[#212121]" onClick={() => router.push('/login')}>{isAuthLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Login'} </Button>
+                    <Button className="text-md rounded-full min-w-[80px] text-[#212121]" onClick={() => router.push('/login')}>Login</Button>
                 }
             </div>
 
@@ -35,7 +36,8 @@ export default function Navbar() {
                     <Button variant="link" className="text-xl text-foreground">About</Button>
                     <Button variant="link" className="text-xl text-foreground" onClick={() => { router.push('/home') }}>Post wall</Button>
                     {currentUser ? <Button className="text-md rounded-full mx-auto max-w-[100px] text-[#212121]" onClick={() => router.push('/post')}>Post</Button> :
-                        <Button disabled={isAuthLoading} className="text-md rounded-full min-w-[30px] text-[#212121]" onClick={() => router.push('/login')}>{isAuthLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Login'} </Button>
+                        // <Button disabled={isAuthLoading} className="text-md rounded-full min-w-[30px] text-[#212121]" onClick={() => router.push('/login')}>{isAuthLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Login'} </Button>
+                        <Button className="text-md rounded-full min-w-[30px] text-[#212121]" onClick={() => router.push('/login')}>Login</Button>
                     }
                 </SheetContent>
             </Sheet>
